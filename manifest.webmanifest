@@ -1,0 +1,19 @@
+{
+  "name": "Disney Planner · 16–17 octobre",
+  "short_name": "Disney Planner",
+  "description": "Parcours et checklist Disneyland Paris, hors ligne après le premier chargement",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fa",
+  "theme_color": "#172e52",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
