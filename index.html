@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#172e52">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Disney Planner">
+<meta name="description" content="Programme privé de visite Disneyland Paris — vendredi 16 et samedi 17 octobre 2026.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon.svg">
+<title>Disney Planner · 16–17 octobre</title>
+<style>
+:root{--navy:#19345b;--blue:#2c649e;--ink:#17304e;--muted:#60718a;--paper:#f4f7fa;--white:#fff;--pink:#fce5ec;--mint:#e3f3ed;--yellow:#fff0d2;--line:#dee6ed;--shadow:0 5px 20px #112b4710;--r:18px}
+*{box-sizing:border-box} html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;color:var(--ink);background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;padding-bottom:calc(105px + env(safe-area-inset-bottom))}button,input,textarea,select{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,input:focus-visible{outline:3px solid #2a80c2;outline-offset:2px}button:disabled{opacity:.45;cursor:default}
+header{background:linear-gradient(140deg,#142f56,#4470a8);color:white;padding:calc(17px + env(safe-area-inset-top)) 18px 20px} .headerin{max-width:820px;margin:auto} .eyebrow{font-size:12px;letter-spacing:1.7px;text-transform:uppercase;opacity:.75;font-weight:800}h1{font-family:Georgia,serif;letter-spacing:-.5px;font-size:28px;line-height:1.2;margin:8px 0 5px}header p{color:#e0ecf9;margin:0 0 12px;font-size:13px} .pills{display:flex;gap:7px;flex-wrap:wrap}.pill{font-size:12px;padding:6px 9px;background:#ffffff24;border:1px solid #ffffff30;border-radius:30px;color:white}
+main{max-width:820px;margin:auto;padding:12px 12px}.tabs{display:flex;background:white;position:sticky;top:0;z-index:10;padding:5px;border-radius:16px;box-shadow:0 2px 10px #112b4713;gap:5px}.tab{flex:1;padding:12px 6px;border:0;background:transparent;color:var(--ink);border-radius:12px;font-weight:750;font-size:14px}.tab.active{color:white;background:var(--navy)}.tab small{display:block;font-size:11px;font-weight:500;opacity:.8;margin-top:1px}
+.card{background:white;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-top:12px;padding:14px}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.muted{color:var(--muted)}.small{font-size:12px}.bold{font-weight:800}h2{font-size:18px;margin:0 0 9px;font-weight:800}h3{font-size:15px;margin:0 0 8px}.progressTrack{height:9px;background:#eaf0f5;border-radius:20px;overflow:hidden;margin:10px 0}.progressBar{background:#3a9783;height:100%;width:0;transition:width .25s}.budgetNums{font-size:22px;font-weight:850;font-variant-numeric:tabular-nums}.budgetNums.warn{color:#b05628}.banner{border-left:4px solid #e7a845;padding:10px 12px;border-radius:8px;background:#fff5df;color:#5f4822;font-size:12px;margin-top:10px}.next{background:#f2f7fc;border-radius:13px;padding:11px 12px}.next strong{display:block;font-size:15px;margin:3px 0}.next .time{font-size:12px;color:#436c91;font-weight:700}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn{border-radius:11px;border:1px solid #c9d7e5;padding:10px 12px;background:white;color:var(--ink);font-weight:700;font-size:13px;min-height:42px}.btn.primary{background:var(--navy);color:white;border-color:var(--navy)}.btn.subtle{background:#edf4fa}.btn.danger{color:#982f42;border-color:#edc9d1}.btn.full{width:100%}
+.sectionBar{display:flex;gap:8px;align-items:center;margin:20px 3px 9px}.sectionBar h2{margin:0}.sectionBar span{font-size:12px;color:var(--muted)}.legend{font-size:12px;color:#556a80;line-height:1.6;margin:8px 3px 0}.star{color:#b51f55;font-weight:900}.stop{background:white;border:1px solid var(--line);border-radius:15px;margin:7px 0;overflow:hidden;box-shadow:0 2px 9px #112b4709}.stop.done{background:#f1fbf6;opacity:.88}.stop.skipped{opacity:.62}.stopmain{display:flex;align-items:flex-start;gap:10px;padding:13px 11px}.tick{appearance:none;width:24px;height:24px;min-width:24px;border:2px solid #b7c9d8;border-radius:7px;background:white;margin:2px 0 0;position:relative}.tick:checked{background:#218764;border-color:#218764}.tick:checked:after{content:'✓';color:white;font-weight:900;position:absolute;left:4px;top:-1px;font-size:17px}.stopbody{flex:1;min-width:0}.stophead{display:flex;align-items:flex-start;gap:6px}.planned{font-size:13px;color:#275d8a;white-space:nowrap;font-weight:800;font-variant-numeric:tabular-nums;margin-top:1px}.stopname{font-weight:800;font-size:15px;line-height:1.3;flex:1}.stop.done .stopname{text-decoration:line-through;text-decoration-color:#77ac97}.stopmeta{font-size:12px;color:#697d92;margin-top:5px;line-height:1.45}.chip{font-size:11px;border-radius:6px;background:#f3e8ee;color:#7b3760;padding:3px 5px;font-weight:700}.chip.food{background:#fff1cf;color:#795d20}.chip.meet{background:#ecdef8;color:#69448c}.chip.show{background:#e6effe;color:#3f618f}.chip.ride{background:#fae5ec;color:#a33965}.chip.walk{background:#e5f2e8;color:#4e7d63}.minibtn{background:#eff4f9;border:none;border-radius:8px;min-height:35px;min-width:35px;padding:7px;font-size:16px;color:#325a81}.details{border-top:1px dashed #d9e3eb;padding:13px;background:#fbfcfe}.details p{font-size:13px;line-height:1.5;margin:0 0 12px}.formline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}.formline label{font-size:12px;color:#526b85;font-weight:650}.formline input{padding:8px;border-radius:8px;border:1px solid #c8d7e3;min-height:38px;max-width:160px}.formline textarea{width:100%;min-height:55px;border-radius:9px;border:1px solid #c8d7e3;padding:9px;resize:vertical}.details .controls{margin-top:8px}
+.mapflow{position:relative;padding-left:28px;display:flex;flex-direction:column;gap:0}.mapflow:before{content:'';position:absolute;left:13px;top:14px;bottom:12px;border-left:3px dashed #a5c0d5}.mapzone{position:relative;padding:9px 12px;background:#f4f7fb;border:1px solid #e0e8ef;border-radius:11px;margin:5px 0;font-size:13px}.mapzone:before{content:'';position:absolute;background:#fff;border:3px solid #447bab;width:13px;height:13px;border-radius:50%;left:-24px;top:13px}.mapzone strong{display:block}.mapzone small{display:block;color:#647a8e;font-size:11px;margin-top:3px}.mapzone.complete:before{background:#319a72;border-color:#319a72}.explain{font-size:12px;line-height:1.55;color:#65768a;margin:6px 0 0}
+.modalOverlay{position:fixed;inset:0;background:#091b31a0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px}.modal{max-width:440px;background:white;border-radius:20px;padding:20px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 14px 50px #0004}.modal h2{margin-bottom:10px}.modal label{font-weight:700;font-size:13px;display:block;margin-top:12px}.modal input,.modal select{border:1px solid #b9cadd;border-radius:10px;width:100%;padding:12px;margin-top:5px;background:white}.error{color:#b52440;font-size:12px;margin:8px 0}.purchase{border-bottom:1px solid #e5ebf0;padding:10px 0;display:flex;align-items:center;gap:12px}.purchase:last-child{border:0}.purchase .remove{background:#faeef0;color:#a32d40;border:0;padding:7px;border-radius:8px}
+.bottom{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#ffffffef;backdrop-filter:blur(12px);border-top:1px solid #dce6ed}.bottomIn{max-width:820px;margin:auto;display:flex;gap:8px}.bottom button{flex:1}.bottom .primary{flex:1.7}
+.toast{position:fixed;bottom:calc(89px + env(safe-area-inset-bottom));z-index:50;left:50%;transform:translateX(-50%);padding:10px 16px;border-radius:40px;background:#173858;color:white;font-size:13px;max-width:94vw;box-shadow:0 4px 15px #0003;white-space:nowrap}
+.hidden{display:none!important}#filepicker{display:none}.footer{font-size:12px;color:#7a8998;text-align:center;margin:20px 0 10px;line-height:1.55} @media(min-width:690px){h1{font-size:33px}.stopmain{padding:15px 17px}main{padding:16px 16px}}
+</style>
+</head>
+<body>
+<header><div class="headerin"><div class="eyebrow">Votre compagnon de visite</div><h1>✦ Disney Planner</h1><p>16 & 17 octobre 2026 · 1 adulte + 1 enfant · 1,24 m</p><div class="pills"><span class="pill">✓ Parcours par secteur</span><span class="pill">★ Premier Access One</span><span class="pill">📱 Sauvegarde sur cet iPhone</span></div></div></header>
+<main>
+<div class="tabs" role="tablist"><button class="tab active" data-day="friday" role="tab" aria-selected="true">Vendredi 16<small>Parc Disneyland</small></button><button class="tab" data-day="saturday" role="tab" aria-selected="false">Samedi 17<small>Adventure World</small></button></div>
+<section class="card" id="summary"></section>
+<section class="card" id="meetings"></section>
+<section class="card" id="budget"></section>
+<div class="sectionBar"><h2>Parcours du jour</h2><span id="allCount"></span></div>
+<p class="legend"><span class="star">★</span> One à envisager · <span class="star">★★</span> One plus prioritaire si file ≥ 40 min. Acheter uniquement si le gain et le créneau valent le prix. Les horaires sont des <strong>cibles</strong>, pas des réservations.</p>
+<div id="stops"></div>
+<section class="card"><h2>🧭 Itinéraire par secteurs</h2><div id="zoneMap" class="mapflow"></div><p class="explain">Schéma original de l'ordre des quartiers, pas un plan géographique exact. Les liens « Google Maps » ouvrent la recherche d'une attraction. Utilise la carte officielle de Disneyland Paris pour les allées et les files en temps réel.</p></section>
+<section class="card"><h2>📲 Transmettre la progression</h2><p class="small muted">Après quelques attractions, copie le bilan et colle-le dans notre conversation. Je pourrai alors proposer une suite du programme selon l'heure, les files réelles et les réservations.</p><textarea id="extra" rows="3" style="width:100%;resize:vertical;border-radius:10px;border:1px solid #cbd9e5;padding:10px" placeholder="Ex. Il est 14h10, 50 min à Spider-Man, rencontre Anna/Elsa à 15h30..." aria-label="Informations supplémentaires pour ChatGPT"></textarea><div class="controls"><button class="btn primary" id="copy" type="button">Copier le bilan pour ChatGPT</button><button class="btn" id="share" type="button">Partager le bilan</button></div></section>
+<section class="card"><h2>🔒 Sauvegarde</h2><p class="small muted">Les cases, horaires modifiés, notes et dépenses sont sauvegardés automatiquement <strong>sur cet appareil</strong>. Aucun compte ni donnée de réservation n'est envoyé à un serveur par cette application. Pour éviter une perte de données, exporte une copie après la première journée.</p><div class="controls"><button class="btn" id="export">Exporter ma sauvegarde</button><button class="btn" id="import">Importer</button><input type="file" id="filepicker" accept="application/json,.json"><button class="btn danger" id="reset">Réinitialiser ce jour</button></div></section>
+<div class="footer">Application non officielle, indépendante de Disneyland Paris. Horaires et disponibilités à confirmer dans l'application Disney. · Version 1.0</div>
+</main>
+<div class="bottom"><div class="bottomIn"><button class="btn subtle" id="gotoNext">↓ Prochaine étape</button><button class="btn primary" id="quickDone">✓ Étape terminée</button><button class="btn" id="quickOne">+ One</button></div></div>
+<div id="modalroot"></div><div id="toast" class="toast hidden" role="status"></div>
+<script id="seed-data" type="application/json">{
+  "friday": [
+    {
+      "id": "f00",
+      "time": "09:00",
+      "title": "Entrée et file virtuelle Princesses",
+      "zone": "Entrée / Main Street",
+      "mins": 30,
+      "desc": "Dès scan des billets : essayer la réservation du Pavillon des Princesses pour 2. Vérifier ensuite Big Thunder Mountain.",
+      "kind": "task",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f01",
+      "time": "09:30",
+      "title": "Big Thunder Mountain",
+      "zone": "Frontierland",
+      "mins": 45,
+      "desc": "Train de la mine, première grosse attraction avant les files.",
+      "kind": "ride",
+      "star": 1,
+      "priority": true
+    },
+    {
+      "id": "f02",
+      "time": "10:15",
+      "title": "Adventure Isle",
+      "zone": "Adventureland",
+      "mins": 30,
+      "desc": "Ponts, grottes, exploration physique. Rester sur les chemins ouverts.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f03",
+      "time": "10:45",
+      "title": "Le Passage enchanté d’Aladdin",
+      "zone": "Adventureland",
+      "mins": 15,
+      "desc": "Décors du dessin animé à explorer à pied.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f04",
+      "time": "11:00",
+      "title": "Placement pour Disney Stars on Parade",
+      "zone": "Central Plaza",
+      "mins": 25,
+      "desc": "Choisir une vue latérale sans bloquer trop longtemps.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f05",
+      "time": "11:30",
+      "title": "Disney Stars on Parade",
+      "zone": "Main Street / Central Plaza",
+      "mins": 20,
+      "desc": "Parade et personnages Disney. Horaire relevé dans ton application.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f06",
+      "time": "11:55",
+      "title": "Déjeuner rapide",
+      "zone": "Adventureland",
+      "mins": 35,
+      "desc": "Formule au comptoir, sans service à table.",
+      "kind": "food",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f07",
+      "time": "12:35",
+      "title": "Pirates des Caraïbes",
+      "zone": "Adventureland",
+      "mins": 40,
+      "desc": "Bateau, pirates et petites descentes, quelques scènes dans le noir.",
+      "kind": "ride",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f08",
+      "time": "13:20",
+      "title": "Peter Pan’s Flight",
+      "zone": "Fantasyland",
+      "mins": 45,
+      "desc": "Vol en bateau suspendu. File souvent longue : One ** si le gain vaut le prix.",
+      "kind": "ride",
+      "star": 2,
+      "priority": true
+    },
+    {
+      "id": "f09",
+      "time": "14:10",
+      "title": "Blanche-Neige et les Sept Nains",
+      "zone": "Fantasyland",
+      "mins": 25,
+      "desc": "Parcours de conte avec une sorcière et de courts passages sombres.",
+      "kind": "ride",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f10",
+      "time": "14:40",
+      "title": "Le Labyrinthe d’Alice",
+      "zone": "Fantasyland",
+      "mins": 30,
+      "desc": "Parcours à pied, jeu d’exploration même sous petite pluie.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f11",
+      "time": "15:10",
+      "title": "Rencontre avec une princesse",
+      "zone": "Fantasyland",
+      "mins": 35,
+      "desc": "HORAIRE FLEXIBLE : à ajuster dès la réservation virtuelle.",
+      "kind": "meet",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f12",
+      "time": "15:50",
+      "title": "It’s a Small World",
+      "zone": "Fantasyland",
+      "mins": 25,
+      "desc": "Promenade musicale en bateau, à ne pas manquer.",
+      "kind": "ride",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f13",
+      "time": "16:20",
+      "title": "Rencontre avec Mickey",
+      "zone": "Fantasyland",
+      "mins": 30,
+      "desc": "HORAIRE FLEXIBLE : essayer la file virtuelle après la première rencontre.",
+      "kind": "meet",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f14",
+      "time": "16:50",
+      "title": "Placement pour Halloween",
+      "zone": "Central Plaza",
+      "mins": 10,
+      "desc": "Se rapprocher de l’itinéraire de la cavalcade.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f15",
+      "time": "17:00",
+      "title": "Mickey’s Halloween Celebration",
+      "zone": "Main Street / Central Plaza",
+      "mins": 20,
+      "desc": "Parade festive. Heure relevée dans l’application.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f16",
+      "time": "17:30",
+      "title": "Star Wars Hyperspace Mountain",
+      "zone": "Discoveryland",
+      "mins": 45,
+      "desc": "Lancement et inversions dans le noir ; taille min. 1,20 m.",
+      "kind": "ride",
+      "star": 1,
+      "priority": true
+    },
+    {
+      "id": "f17",
+      "time": "18:20",
+      "title": "Autopia",
+      "zone": "Discoveryland",
+      "mins": 40,
+      "desc": "Voiture sur rail à conduire avec un adulte.",
+      "kind": "ride",
+      "star": 1,
+      "priority": true
+    },
+    {
+      "id": "f18",
+      "time": "19:05",
+      "title": "Dîner rapide",
+      "zone": "Discoveryland",
+      "mins": 35,
+      "desc": "Repas simple à proximité, sans réservation.",
+      "kind": "food",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f19",
+      "time": "19:45",
+      "title": "Château et Main Street",
+      "zone": "Château / Main Street",
+      "mins": 30,
+      "desc": "Photos et décorations ; balade sans courir.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "f20",
+      "time": "20:15",
+      "title": "Les Voyages de Pinocchio",
+      "zone": "Fantasyland",
+      "mins": 25,
+      "desc": "Petit voyage à travers le conte, si encore ouvert. Option secondaire.",
+      "kind": "ride",
+      "star": 0,
+      "priority": false
+    },
+    {
+      "id": "f21",
+      "time": "20:40",
+      "title": "Main Street et pause",
+      "zone": "Main Street",
+      "mins": 45,
+      "desc": "Boutiques et récupération ; décider si vous restez pour la nuit.",
+      "kind": "walk",
+      "star": 0,
+      "priority": false
+    },
+    {
+      "id": "f22",
+      "time": "21:35",
+      "title": "OPTION : Disney Tales of Magic",
+      "zone": "Main Street",
+      "mins": 50,
+      "desc": "Spectacle à 22h ; arrivée vers 21h35. Option selon l’énergie.",
+      "kind": "show",
+      "star": 0,
+      "priority": false
+    }
+  ],
+  "saturday": [
+    {
+      "id": "s00",
+      "time": "08:30",
+      "title": "Arrivée aux portes",
+      "zone": "Entrée",
+      "mins": 30,
+      "desc": "Contrôles ; préparer les deux billets. Réserver Anna & Elsa seulement après les scans.",
+      "kind": "task",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s01",
+      "time": "09:00",
+      "title": "File virtuelle Anna & Elsa + départ",
+      "zone": "Entrée / Adventure Way",
+      "mins": 20,
+      "desc": "Réserver la Rencontre Royale pour 2, noter le créneau ; consulter Frozen One.",
+      "kind": "task",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s02",
+      "time": "09:20",
+      "title": "Frozen Ever After",
+      "zone": "World of Frozen",
+      "mins": 65,
+      "desc": "Attraction phare ; vérifier One ** si la file est longue.",
+      "kind": "ride",
+      "star": 2,
+      "priority": true
+    },
+    {
+      "id": "s03",
+      "time": "10:25",
+      "title": "Vers Worlds of Pixar",
+      "zone": "Adventure Way",
+      "mins": 15,
+      "desc": "Marche sans arrêts pour conserver l’avance.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s04",
+      "time": "10:40",
+      "title": "Cars ROAD TRIP",
+      "zone": "Worlds of Pixar",
+      "mins": 30,
+      "desc": "Tram avec décors et effets spéciaux.",
+      "kind": "ride",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s05",
+      "time": "11:10",
+      "title": "Vers Ratatouille",
+      "zone": "Worlds of Pixar",
+      "mins": 10,
+      "desc": "Court déplacement dans le même secteur. Consulter One.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s06",
+      "time": "11:20",
+      "title": "Ratatouille",
+      "zone": "Worlds of Pixar",
+      "mins": 50,
+      "desc": "Course-poursuite 3D immersive ; One ** si pertinent.",
+      "kind": "ride",
+      "star": 2,
+      "priority": true
+    },
+    {
+      "id": "s07",
+      "time": "12:10",
+      "title": "Déjeuner rapide",
+      "zone": "Worlds of Pixar",
+      "mins": 40,
+      "desc": "Sandwich ou repas au comptoir, sans service à table.",
+      "kind": "food",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s08",
+      "time": "12:50",
+      "title": "Vers Adventure Way",
+      "zone": "Adventure Way",
+      "mins": 40,
+      "desc": "Déplacement, petite pause et point de vue sur la cavalcade.",
+      "kind": "walk",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s09",
+      "time": "13:50",
+      "title": "Disney Princess Cavalcade",
+      "zone": "Adventure Way",
+      "mins": 15,
+      "desc": "Princesse(s) Disney, courte animation visible sur l’itinéraire.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s10",
+      "time": "14:10",
+      "title": "Spider-Man W.E.B. Adventure",
+      "zone": "Avengers Campus",
+      "mins": 40,
+      "desc": "Lancer des toiles avec les bras. One ** si attente importante.",
+      "kind": "ride",
+      "star": 2,
+      "priority": true
+    },
+    {
+      "id": "s11",
+      "time": "14:55",
+      "title": "Avengers Assemble: Flight Force",
+      "zone": "Avengers Campus",
+      "mins": 35,
+      "desc": "Grand huit Marvel avec inversions, min. 1,20 m.",
+      "kind": "ride",
+      "star": 1,
+      "priority": true
+    },
+    {
+      "id": "s12",
+      "time": "15:35",
+      "title": "Tower of Terror",
+      "zone": "World Premiere Plaza",
+      "mins": 40,
+      "desc": "Ascenseur à chutes verticales et ambiance angoissante. One ** possible.",
+      "kind": "ride",
+      "star": 2,
+      "priority": true
+    },
+    {
+      "id": "s13",
+      "time": "16:20",
+      "title": "Placement pour TOGETHER",
+      "zone": "Studio Theater",
+      "mins": 30,
+      "desc": "Vise une place centrale ; séance 16h50.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s14",
+      "time": "16:50",
+      "title": "TOGETHER : une aventure musicale Pixar",
+      "zone": "Studio Theater",
+      "mins": 30,
+      "desc": "Spectacle musical Pixar.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s15",
+      "time": "17:20",
+      "title": "Animation Academy",
+      "zone": "World Premiere Plaza",
+      "mins": 35,
+      "desc": "Atelier dessin d’un personnage Disney ; séance à confirmer.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s16",
+      "time": "18:00",
+      "title": "Placement pour Mickey et le Magicien",
+      "zone": "Animagique Theater",
+      "mins": 30,
+      "desc": "Se placer vers le centre, légèrement en retrait.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s17",
+      "time": "18:30",
+      "title": "Mickey et le Magicien",
+      "zone": "Animagique Theater",
+      "mins": 30,
+      "desc": "Grand spectacle musical avec personnages Disney.",
+      "kind": "show",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s18",
+      "time": "19:05",
+      "title": "Dîner rapide",
+      "zone": "World Premiere Plaza",
+      "mins": 35,
+      "desc": "Service rapide à proximité du théâtre.",
+      "kind": "food",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s19",
+      "time": "19:45",
+      "title": "Rencontre royale Anna et Elsa",
+      "zone": "World of Frozen",
+      "mins": 45,
+      "desc": "HORAIRE FLEXIBLE : insérer au créneau réel, priorité sur Cars si conflit.",
+      "kind": "meet",
+      "star": 0,
+      "priority": true
+    },
+    {
+      "id": "s20",
+      "time": "20:30",
+      "title": "Adventure Bay et boutique",
+      "zone": "Adventure Way / Adventure Bay",
+      "mins": 50,
+      "desc": "Retour vers le lac, ambiance du soir et pause.",
+      "kind": "walk",
+      "star": 0,
+      "priority": false
+    },
+    {
+      "id": "s21",
+      "time": "21:20",
+      "title": "OPTION : Disney Cascade of Lights",
+      "zone": "Adventure Bay",
+      "mins": 50,
+      "desc": "Spectacle à 21h50. Se placer vers 21h25–21h30, selon l’énergie.",
+      "kind": "show",
+      "star": 0,
+      "priority": false
+    }
+  ]
+}</script>
+<script>
+(()=>{
+'use strict';
+const DATA=JSON.parse(document.getElementById('seed-data').textContent);
+const KEY='disney_planner_v1_2026';
+const defs={friday:{label:'Vendredi 16 octobre',park:'Parc Disneyland',meet:[{id:'princess',title:'Pavillon des Princesses',hint:'Dès entrée ; essayer d’abord cette file virtuelle.'},{id:'mickey',title:'Rencontre avec Mickey',hint:'Après la première rencontre, vérifier les prochaines disponibilités.'}]},saturday:{label:'Samedi 17 octobre',park:'Disney Adventure World',meet:[{id:'anna',title:'Anna et Elsa',hint:'Dès entrée, après scan des 2 billets. Créneau libre à adapter immédiatement.'}]}};
+const clone=o=>JSON.parse(JSON.stringify(o));
+let state;
+try{state=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+if(!state||!state.days||!state.days.friday||!state.days.saturday){state={day:'friday',days:{friday:{items:clone(DATA.friday),spend:[],meetings:{},extra:''},saturday:{items:clone(DATA.saturday),spend:[],meetings:{},extra:''}}};}
+for(const d of ['friday','saturday']) {let s=state.days[d]; if(!s.spend)s.spend=[];if(!s.meetings)s.meetings={};if(!s.items||!s.items.length)s.items=clone(DATA[d]);if(s.extra===undefined)s.extra='';}
+let day=state.day||'friday';let expanded=null;const $=sel=>document.querySelector(sel), esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));const today=()=>state.days[day];
+function save(){state.day=day;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){notify('Stockage indisponible : exporte la sauvegarde');}}
+function notify(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(notify.id);notify.id=setTimeout(()=>el.classList.add('hidden'),2800)}
+function money(x){return (Number(x)||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2})}
+const total=()=>today().spend.reduce((a,b)=>a+(Number(b.cost)||0),0);
+function nextStep(){return today().items.find(x=>x.status!=='done'&&x.status!=='skip'&&x.priority) || today().items.find(x=>x.status!=='done'&&x.status!=='skip');}
+function markItem(id,status){let x=today().items.find(x=>x.id===id);if(!x)return;x.status=(x.status===status?'todo':status);if(x.status==='done')x.actual=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});if(x.status==='todo')delete x.actual;save();render();}
+function render(){const s=today(),items=s.items;const done=items.filter(x=>x.status==='done').length,priority=items.filter(x=>x.priority).length,pdone=items.filter(x=>x.priority&&x.status==='done').length;const next=nextStep(),remain=100-total();
+ document.querySelectorAll('.tab').forEach(b=>{let active=b.dataset.day===day;b.classList.toggle('active',active);b.setAttribute('aria-selected',active?'true':'false')});
+ $('#summary').innerHTML=`<div class="row"><div><div class="small muted">${esc(defs[day].label)}</div><h2 style="margin:3px 0">${esc(defs[day].park)}</h2></div><div class="small bold">${done}/${items.length} étapes</div></div><div class="progressTrack"><div class="progressBar" style="width:${Math.round(done/items.length*100)}%"></div></div><div class="small muted">${pdone}/${priority} priorités réalisées · ${items.filter(x=>x.status==='skip').length} sautées</div><div class="next" style="margin-top:12px"><div class="small muted">Prochaine étape prioritaire non cochée</div>${next?`<strong>${esc(next.title)}</strong><span class="time">${esc(next.time)} · ${esc(next.zone)}</span>`:'<strong>Programme terminé 🎉</strong>'}</div><div class="banner">Les rencontres à file virtuelle et les Premier Access peuvent imposer un nouvel ordre. Après réservation, modifie l’heure et déplace l’étape avec ↑ / ↓.</div>`;
+ const meetings=defs[day].meet;
+ $('#meetings').innerHTML=`<h2>👑 Rencontres avec les personnages</h2><p class="small muted">Réservation dans l'app officielle Disney, uniquement après entrée si une file virtuelle est proposée. Ne partage pas de QR code ici.</p>${meetings.map(m=>{let v=s.meetings[m.id]||{};return `<div style="border-top:1px solid var(--line);padding:12px 0"><div class="row"><strong>${esc(m.title)}</strong><span class="chip meet">${v.done?'Rencontre faite':v.time?'Créneau noté':'À réserver'}</span></div><p class="small muted" style="margin:5px 0">${esc(m.hint)}</p><div class="formline"><label for="meet-${m.id}">Créneau reçu</label><input id="meet-${m.id}" type="time" data-meet="${m.id}" value="${esc(v.time||'')}"><button class="btn" data-meetdone="${m.id}">${v.done?'✓ Effectuée':'Marquer effectuée'}</button></div></div>`}).join('')}`;
+ let spent=total();$('#budget').innerHTML=`<div class="row"><div><h2 style="margin:0">🎟️ Premier Access One</h2><div class="small muted">Aucun forfait : on paie par attraction pour 2.</div></div><div class="budgetNums ${spent>80?'warn':''}">${money(spent)}</div></div><div class="progressTrack"><div class="progressBar" style="background:${spent>100?'#c43952':spent>80?'#d6a33e':'#438fc1'};width:${Math.min(100,spent)}%"></div></div><div class="row small"><span>Objectif : ≤ 80 €</span><strong>Reste au plafond : ${money(Math.max(0,100-spent))}</strong></div>${s.spend.map((p,i)=>`<div class="purchase"><div style="flex:1"><strong>${esc(p.title)}</strong><div class="small muted">${esc(p.slot||'Créneau non noté')} · ${money(p.cost)} pour 2</div></div><button class="remove" data-rm="${i}" aria-label="Supprimer achat ${esc(p.title)}">Suppr.</button></div>`).join('')}<div class="controls"><button class="btn primary" id="addone">+ Enregistrer un achat One</button></div><p class="explain">Regarder l'attente dès 40 min ; acheter seulement si le prochain créneau disponible et le temps gagné sont intéressants. Une réservation One n'est pas un coupe-file instantané. Consulte toujours les conditions affichées par Disney.</p>`;
+ $('#allCount').textContent=`${items.filter(x=>x.status!=='done'&&x.status!=='skip').length} restantes`;
+ $('#stops').innerHTML=items.map((x,i)=>`<article class="stop ${x.status==='done'?'done':''} ${x.status==='skip'?'skipped':''}" id="stop-${x.id}"><div class="stopmain"><input class="tick" type="checkbox" data-tick="${x.id}" aria-label="Marquer ${esc(x.title)} comme fait" ${x.status==='done'?'checked':''}><div class="stopbody"><div class="stophead"><span class="planned">${esc(x.time)}</span><div class="stopname">${esc(x.title)}${x.star?` <span class="star">${'★'.repeat(x.star)}</span>`:''}</div></div><div class="stopmeta"><span class="chip ${x.kind}">${({ride:'Attraction',show:'Spectacle',walk:'Balade',meet:'Rencontre',food:'Repas',task:'Organisation'})[x.kind]||'Étape'}</span> &nbsp;📍 ${esc(x.zone)} · ${x.mins} min prévus ${x.actual?' · ✓ '+esc(x.actual):''}</div></div><button class="minibtn" data-expand="${x.id}" aria-label="Détails ${esc(x.title)}">${expanded===x.id?'−':'⋯'}</button></div>${expanded===x.id?`<div class="details"><p>${esc(x.desc)}</p><div class="formline"><label>Heure cible <input data-timedit="${x.id}" type="time" value="${esc(x.time)}"></label><label>Durée cible (min) <input data-minedit="${x.id}" type="number" min="1" max="240" value="${x.mins}"></label></div><div class="formline"><textarea placeholder="Notes (files, incident, prix, horaire réel...)" data-note="${x.id}">${esc(x.note||'')}</textarea></div><div class="controls"><button class="btn" data-move="${x.id}" data-direction="-1">↑ Avancer</button><button class="btn" data-move="${x.id}" data-direction="1">↓ Reculer</button><button class="btn" data-skip="${x.id}">${x.status==='skip'?'Rétablir':'Passer / reporter'}</button><button class="btn" data-maps="${x.id}">📍 Google Maps</button></div></div>`:''}</article>`).join('');
+ const zones=[];for(const x of items){let last=zones[zones.length-1];if(last&&last.name===x.zone){last.steps.push(x)}else zones.push({name:x.zone,steps:[x]})}
+ $('#zoneMap').innerHTML=zones.map((z,i)=>`<div class="mapzone ${z.steps.every(x=>x.status==='done')?'complete':''}"><strong>${i+1}. ${esc(z.name)}</strong><small>${z.steps.map(x=>x.title).join(' → ').slice(0,150)}</small></div>`).join('');
+ $('#extra').value=s.extra;
+}
+function showOne(){const opts=today().items.filter(x=>x.star).map(x=>`<option value="${esc(x.id)}">${esc(x.title)}</option>`).join('');openModal(`<h2>Ajouter un Premier Access One</h2><p class="small muted">Prix total pour vous deux. Vérifie le créneau et le tarif <strong>avant</strong> de payer dans l'application Disney.</p><form id="oneform"><label>Attraction<select name="id" required>${opts}</select></label><label>Prix total pour 2 (€)<input name="cost" type="number" min="0.01" step="0.01" inputmode="decimal" required placeholder="Ex. 28"></label><label>Créneau attribué (facultatif)<input name="slot" type="time"></label><div class="controls"><button class="btn primary" type="submit">Enregistrer l'achat</button><button type="button" class="btn" id="closeModal">Annuler</button></div><p id="oneerror" class="error"></p></form>`);}
+function openModal(html){$('#modalroot').innerHTML=`<div class="modalOverlay" id="overlay"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`}
+function closeModal(){$('#modalroot').innerHTML=''}
+function report(){let s=today(), list=s.items;return `DISNEY PLANNER — ${defs[day].label}, ${defs[day].park}\nHeure actuelle : ${new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}\nBudget Premier Access One : ${money(total())} dépensés sur 100 € maximum pour 2. Achats : ${s.spend.map(x=>x.title+' '+money(x.cost)+(x.slot?' créneau '+x.slot:'')).join('; ')||'aucun'}.\nRencontres : ${defs[day].meet.map(m=>{let x=s.meetings[m.id]||{};return m.title+': '+(x.time?'réservée '+x.time:'non réservée')+(x.done?', effectuée':'')}).join('; ')}\nFAITES : ${list.filter(x=>x.status==='done').map(x=>x.title+(x.actual?' ('+x.actual+')':'')).join(' ; ')||'aucune'}\nSAUTÉES : ${list.filter(x=>x.status==='skip').map(x=>x.title).join(' ; ')||'aucune'}\nRESTANTES DANS L’ORDRE : ${list.filter(x=>x.status!=='done'&&x.status!=='skip').map(x=>x.time+' '+x.title+(x.star?' [One '+x.star+' étoile(s)]':'')).join(' ; ')||'aucune'}\nNotes des étapes : ${list.filter(x=>x.note).map(x=>x.title+': '+x.note).join(' ; ')||'aucune'}\nInformations du moment : ${s.extra||'rien de plus'}\nRéoptimise immédiatement la suite de cette journée, en respectant les séances fixes, les distances, les priorités et le budget, sans supposer de disponibilités ou d'horaires non confirmés.`;}
+async function copyText(t){try{await navigator.clipboard.writeText(t);notify('Bilan copié : colle-le dans ChatGPT ✓')}catch(e){openModal(`<h2>Copier le bilan</h2><textarea style="width:100%;height:45vh" id="manualcopy">${esc(t)}</textarea><p class="small">Sélectionne le texte puis « Copier ».</p><button class="btn" id="closeModal">Fermer</button>`);$('#manualcopy')?.select();}}
+function download(text,filename,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000)}
+function getItem(id){return today().items.find(x=>x.id===id)}
+function switchDay(d){if(d===day)return;today().extra=$('#extra').value;day=d;expanded=null;save();render();window.scrollTo({top:0,behavior:'instant'});}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.day){switchDay(b.dataset.day);return}
+ if(b.dataset.expand){expanded=expanded===b.dataset.expand?null:b.dataset.expand;render();return}
+ if(b.dataset.skip){markItem(b.dataset.skip,'skip');return}
+ if(b.dataset.move){let a=today().items,i=a.findIndex(x=>x.id===b.dataset.move),j=i+Number(b.dataset.direction);if(j>=0&&j<a.length){[a[i],a[j]]=[a[j],a[i]];save();render();}return}
+ if(b.dataset.maps){let x=getItem(b.dataset.maps);if(x)window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x.title+' Disneyland Paris'),'_blank','noopener');return}
+ if(b.dataset.meetdone){let id=b.dataset.meetdone,v=today().meetings[id]||{};v.done=!v.done;today().meetings[id]=v;save();render();return}
+ if(b.dataset.rm!==undefined){today().spend.splice(Number(b.dataset.rm),1);save();render();return}
+ if(b.id==='addone'||b.id==='quickOne'){showOne();return}
+ if(b.id==='closeModal'||b.id==='overlay'){closeModal();return}
+ if(b.id==='quickDone'){let x=nextStep();if(x){markItem(x.id,'done');notify(x.title+' ✓')}return}
+ if(b.id==='gotoNext'){let x=nextStep();if(x){$('#stop-'+x.id)?.scrollIntoView({behavior:'smooth',block:'center'})}return}
+ if(b.id==='copy'){today().extra=$('#extra').value;save();copyText(report());return}
+ if(b.id==='share'){today().extra=$('#extra').value;save();if(navigator.share)navigator.share({title:'Progression Disney',text:report()}).catch(()=>{});else copyText(report());return}
+ if(b.id==='export'){download(JSON.stringify(state,null,2),'sauvegarde-disney-planner.json','application/json');notify('Sauvegarde exportée');return}
+ if(b.id==='import'){$('#filepicker').click();return}
+ if(b.id==='reset'){openModal(`<h2>Réinitialiser ${esc(defs[day].label)} ?</h2><p>Les cases, notes, achats One et réservations sauvegardées de ce jour seront supprimés. Pense à exporter d'abord.</p><div class="controls"><button class="btn danger" id="confirmreset">Oui, réinitialiser</button><button class="btn" id="closeModal">Annuler</button></div>`);return}
+ if(b.id==='confirmreset'){state.days[day]={items:clone(DATA[day]),spend:[],meetings:{},extra:''};save();closeModal();render();return}
+});
+document.addEventListener('change',e=>{let t=e.target;if(t.dataset.tick){markItem(t.dataset.tick,t.checked?'done':'todo');return}if(t.dataset.meet){let v=today().meetings[t.dataset.meet]||{};v.time=t.value;today().meetings[t.dataset.meet]=v;save();return}if(t.dataset.timedit){let x=getItem(t.dataset.timedit);if(x&&/^\d\d:\d\d$/.test(t.value)){x.time=t.value;save();render()}return}if(t.dataset.minedit){let x=getItem(t.dataset.minedit);if(x){x.mins=Math.max(1,Math.min(240,Number(t.value)||x.mins));save();render()}return}});
+document.addEventListener('input',e=>{if(e.target.dataset.note){let x=getItem(e.target.dataset.note);if(x){x.note=e.target.value;save()}}if(e.target.id==='extra'){today().extra=e.target.value;save()}});
+document.addEventListener('submit',e=>{if(e.target.getAttribute('id')!=='oneform')return;e.preventDefault();let data=new FormData(e.target),x=getItem(data.get('id')),cost=Number(data.get('cost'));if(!x||!Number.isFinite(cost)||cost<=0)return; if(total()+cost>100){$('#oneerror').textContent='Ce montant ferait dépasser le plafond de 100 € pour vous deux. Aucun achat enregistré.';return} today().spend.push({id:x.id,title:x.title,cost,slot:data.get('slot')||''});save();closeModal();render();notify('Achat noté, budget mis à jour')});
+$('#filepicker').addEventListener('change',async e=>{let f=e.target.files?.[0];if(!f)return;try{let obj=JSON.parse(await f.text());if(!obj.days?.friday?.items||!obj.days?.saturday?.items)throw Error('Format incorrect');if(!confirm('Remplacer la progression actuelle par cette sauvegarde ?'))return;state=obj;day=state.day||'friday';save();render();notify('Sauvegarde restaurée ✓')}catch(err){notify('Impossible de lire cette sauvegarde')}e.target.value=''});
+if('serviceWorker'in navigator&&location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+render();
+})();
+</script>
+</body></html>
